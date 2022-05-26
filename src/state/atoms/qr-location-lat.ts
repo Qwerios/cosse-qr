@@ -1,8 +1,27 @@
 import { atom } from 'recoil';
 
+const storageKey = 'qrLat';
+
 const qrLocationLatState = atom<string>({
   key: 'qrLocationLat',
-  default: '0',
+  default: localStorage.getItem(storageKey) || '0',
+  effects: [
+    ({ onSet, setSelf }) => {
+      onSet((newValue, _, isReset) => {
+        isReset
+          ? localStorage.removeItem(storageKey)
+          : localStorage.setItem(storageKey, newValue);
+      });
+
+      if (window.addEventListener) {
+        window.addEventListener('storage', (storageEvent) => {
+          if (storageEvent.key === storageKey) {
+            setSelf(storageEvent.newValue ? storageEvent.newValue : '');
+          }
+        });
+      }
+    },
+  ],  
 });
 
 export default qrLocationLatState;
