@@ -30,7 +30,7 @@ function App() {
     <div className="App">
       <ThemeProvider theme={cosseTheme}>
         <RecoilRoot>
-          <AppBar position="static">    
+          <AppBar position="static" sx={{color: '#ffffff'}}>    
             <Toolbar>
               <IconButton
                 size="large"
@@ -41,7 +41,7 @@ function App() {
               >
                 <MenuIcon />
               </IconButton>     
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>Cosse Camper Adventure QR generator</Typography>                     
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>Cosse Camper Adventure QR</Typography>                     
             </Toolbar>
           </AppBar>
           <MainTabs />

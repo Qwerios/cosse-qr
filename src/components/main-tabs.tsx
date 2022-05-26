@@ -5,6 +5,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import GoogleMapsLocationQr from "./google-maps-location-qr";
 import UrlQr from "./url-qr";
+import Settings from "./settings";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -65,7 +66,7 @@ const MainTabs = () => {
         <UrlQr />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Instellingen
+        <Settings />
       </TabPanel>
     </Paper>
   );
