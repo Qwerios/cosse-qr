@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/cosse-qr/sw.js', { scope: '/cosse-qr/' })})}
