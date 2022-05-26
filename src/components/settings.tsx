@@ -2,6 +2,7 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { useRecoilState } from "recoil";
 import { QRCode } from 'react-qrcode-logo';
+import qrLogoUrl from '../assets/qr-logo.png';
 
 import qrColorState from "../state/atoms/qr-color";
 import qrSizeState from "../state/atoms/qr-size";
@@ -90,7 +91,7 @@ const Settings = () => {
                     value="https://www.cossecamperadventure.com/" 
                     size={size} 
                     fgColor={color} 
-                    logoImage="src/assets/qr-logo.png"
+                    logoImage={qrLogoUrl}
                     logoHeight={size *0.8}
                     logoWidth={size *0.8}
                     logoOpacity={0.1}

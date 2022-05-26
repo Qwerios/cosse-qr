@@ -4,6 +4,7 @@ import Skeleton from "@mui/material/Skeleton";
 import TextField from "@mui/material/TextField";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { QRCode } from 'react-qrcode-logo';
+import qrLogoUrl from '../assets/qr-logo.png';
 
 import qrColorState from "../state/atoms/qr-color";
 import qrDataUrlState from "../state/atoms/qr-data-url";
@@ -41,7 +42,7 @@ const UrlQr = () => {
                           value={url} 
                           size={qrSize} 
                           fgColor={qrColor} 
-                          logoImage="src/assets/qr-logo.png"
+                          logoImage={qrLogoUrl}
                           logoHeight={qrSize *0.8}
                           logoWidth={qrSize *0.8}
                           logoOpacity={0.1}
