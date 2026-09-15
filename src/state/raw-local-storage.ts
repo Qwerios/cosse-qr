@@ -65,13 +65,13 @@ const createRawLocalStorage = <Value>(
       onStoredValueChange(
         storageEvent.newValue === null
           ? initialValue
-          : parseStoredValue(storageEvent.newValue) ?? initialValue,
+          : (parseStoredValue(storageEvent.newValue) ?? initialValue),
       );
     };
 
-    window.addEventListener('storage', handleStorageEvent);
+    window.addEventListener("storage", handleStorageEvent);
 
-    return () => window.removeEventListener('storage', handleStorageEvent);
+    return () => window.removeEventListener("storage", handleStorageEvent);
   },
 });
 
@@ -82,4 +82,3 @@ export const rawStringStorage = createRawLocalStorage<string>(
 );
 
 export default createRawLocalStorage;
-

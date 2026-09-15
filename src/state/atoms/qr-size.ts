@@ -1,7 +1,7 @@
-import { atomWithStorage } from 'jotai/utils';
-import createRawLocalStorage from '../raw-local-storage';
+import { atomWithStorage } from "jotai/utils";
+import createRawLocalStorage from "../raw-local-storage";
 
-const storageKey = 'qrSize';
+const storageKey = "qrSize";
 
 const qrSizeStorage = createRawLocalStorage<number>(
   (storedValue) => {
@@ -17,4 +17,3 @@ const qrSizeStorage = createRawLocalStorage<number>(
 const qrSizeState = atomWithStorage<number>(storageKey, 250, qrSizeStorage, { getOnInit: true });
 
 export default qrSizeState;
-

@@ -1,6 +1,6 @@
-import { atom } from 'jotai';
-import qrLocationLatState from '../atoms/qr-location-lat';
-import qrLocationLonState from '../atoms/qr-location-lon';
+import { atom } from "jotai";
+import qrLocationLatState from "../atoms/qr-location-lat";
+import qrLocationLonState from "../atoms/qr-location-lon";
 
 // Location URL for google maps:
 // https://maps.google.com/maps?q=[LAT],[LON]
@@ -19,4 +19,3 @@ const qrDataLocationState = atom<string | undefined>((get) => {
 });
 
 export default qrDataLocationState;
-
