@@ -1,0 +1,7 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  // npm rewrites both of these on every install, so formatting them only
+  // creates churn to fight over. Everything else oxfmt ignores comes from
+  // .gitignore, which it reads by default.
+  "ignorePatterns": ["package.json", "package-lock.json"]
+}

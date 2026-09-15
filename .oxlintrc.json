@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  // react and jsx-a11y are added on top of the defaults: this is a React app,
+  // and the accessibility rules are worth having on a tool whose whole UI is
+  // form controls.
+  "plugins": ["typescript", "unicorn", "oxc", "react", "jsx-a11y"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "rules": {
+    // tsconfig sets jsx: "react-jsx", so the automatic runtime injects the
+    // JSX factory itself and React never needs to be in scope.
+    "react/react-in-jsx-scope": "off"
+  },
+  "env": {
+    "browser": true,
+    "builtin": true
+  },
+  "ignorePatterns": ["dist"]
+}
