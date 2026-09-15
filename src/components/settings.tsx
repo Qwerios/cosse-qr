@@ -49,7 +49,7 @@ const Settings = () => {
             <Grid size={{ xs: 12, sm: 10 }}>
                 <TextField
                     fullWidth
-                    label="QR Grote (pixels)"
+                    label="QR Grootte (pixels)"
                     onChange={handleSizeChange}
                     required
                     value={size}

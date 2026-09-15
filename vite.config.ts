@@ -26,7 +26,11 @@ export default defineConfig({
       manifest: {
         name: 'Cosse Camper Adventure QR',
         short_name: 'Cosse-QR',
-        description: 'QR code generator for Cosse Camper Adventure sites and booklets',
+        description: 'QR-codegenerator voor de sites en boekjes van Cosse Camper Adventure',
+        // The interface is Dutch. Left unset the plugin defaults this to 'en',
+        // which makes screen readers pronounce the installed app's name and
+        // description with English phonetics.
+        lang: 'nl',
         // Left unset these fall back to vite-plugin-pwa's own defaults, which
         // themed installed copies Vue green (#42b883) while index.html
         // advertised the Cosse green.

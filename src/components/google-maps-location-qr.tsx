@@ -37,7 +37,7 @@ const GoogleMapsLocationQr = () => {
             <Grid size={{ xs: 12, sm: 4 }}>
                 <TextField
                     fullWidth
-                    label="Latitude"
+                    label="Breedtegraad"
                     onChange={handleLatChange}
                     required
                     value={lat}
@@ -47,7 +47,7 @@ const GoogleMapsLocationQr = () => {
             <Grid size={{ xs: 12, sm: 4 }}>
                 <TextField
                     fullWidth
-                    label="Longitude"
+                    label="Lengtegraad"
                     onChange={handleLonChange}
                     required
                     value={lon}
