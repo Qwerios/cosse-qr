@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Skeleton from "@mui/material/Skeleton";
 import TextField from "@mui/material/TextField";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useAtom, useAtomValue } from "jotai";
 import { QRCode } from 'react-qrcode-logo';
 import qrLogoUrl from '../assets/qr-logo.png';
 
@@ -12,11 +12,11 @@ import qrSizeState from "../state/atoms/qr-size";
 import qrStyleState from "../state/atoms/qr-style";
 
 const UrlQr = () => {
-    const qrColor = useRecoilValue(qrColorState);
-    const qrSize = useRecoilValue(qrSizeState);
-    const qrStyle = useRecoilValue(qrStyleState);
+    const qrColor = useAtomValue(qrColorState);
+    const qrSize = useAtomValue(qrSizeState);
+    const qrStyle = useAtomValue(qrStyleState);
 
-    const [url, setUrl] = useRecoilState(qrDataUrlState)
+    const [url, setUrl] = useAtom(qrDataUrlState)
 
     const handleUrlChange = (event: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
         const newUrl = event.target.value;

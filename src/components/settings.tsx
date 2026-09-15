@@ -1,6 +1,6 @@
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import { useRecoilState } from "recoil";
+import { useAtom } from "jotai";
 import { QRCode } from 'react-qrcode-logo';
 import qrLogoUrl from '../assets/qr-logo.png';
 
@@ -13,9 +13,9 @@ import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 
 const Settings = () => {
-    const [color, setColor] = useRecoilState(qrColorState)
-    const [size, setSize] = useRecoilState(qrSizeState)
-    const [style, setStyle] = useRecoilState(qrStyleState)
+    const [color, setColor] = useAtom(qrColorState)
+    const [size, setSize] = useAtom(qrSizeState)
+    const [style, setStyle] = useAtom(qrStyleState)
 
     const exampleSize = 100;
 

@@ -1,38 +1,20 @@
-import { atom } from 'recoil';
+import { atomWithStorage } from 'jotai/utils';
+import createRawLocalStorage from '../raw-local-storage';
 
 const storageKey = 'qrSize';
 
-const fetchStoredValue = () => {
-  const storedValue = parseInt(localStorage.getItem(storageKey) || '', 10);
-  if (isNaN(storedValue)) {
-    return 250;
-  }
-  return storedValue;
-}
+const qrSizeStorage = createRawLocalStorage<number>(
+  (storedValue) => {
+    const parsedSize = parseInt(storedValue, 10);
 
-const qrSizeState = atom<number>({
-  key: 'qrSize',
-  default: fetchStoredValue(),
-  effects: [
-    ({ onSet, setSelf }) => {
-      onSet((newValue, _, isReset) => {
-        isReset
-          ? localStorage.removeItem(storageKey)
-          : localStorage.setItem(storageKey, `${newValue}`);
-      });
+    // Reject anything unparseable or non-positive so a corrupted entry falls
+    // back to the default instead of rendering a zero-pixel QR code.
+    return Number.isNaN(parsedSize) || parsedSize <= 0 ? undefined : parsedSize;
+  },
+  (value) => `${value}`,
+);
 
-      if (window.addEventListener) {
-        window.addEventListener('storage', (storageEvent) => {
-          if (storageEvent.key === storageKey) {
-            const newValue = parseInt( storageEvent.newValue || '', 10);
-            if (!isNaN(newValue) && newValue > 0) {
-              setSelf(newValue);
-            }
-          }
-        });
-      }
-    },
-  ],  
-});
+const qrSizeState = atomWithStorage<number>(storageKey, 250, qrSizeStorage, { getOnInit: true });
 
 export default qrSizeState;
+

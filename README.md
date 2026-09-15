@@ -9,7 +9,7 @@ Node.js 24 (the current LTS line) or newer, as pinned in `.nvmrc` and enforced b
 
 ## Development
 
-This app is built using React and Vite.
+This app is built using React, Vite and Jotai.
 You can run `npm run dev` to serve a development version with hot reload.
 A deployable build can be made using `npm run build`.
 

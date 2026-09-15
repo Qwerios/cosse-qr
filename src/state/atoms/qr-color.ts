@@ -1,27 +1,13 @@
-import { atom } from 'recoil';
+import { atomWithStorage } from 'jotai/utils';
+import { rawStringStorage } from '../raw-local-storage';
 
 const storageKey = 'qrColor';
 
-const qrColorState = atom<string>({
-  key: 'qrColor',
-  default: localStorage.getItem(storageKey) || '#60a72e',
-  effects: [
-    ({ onSet, setSelf }) => {
-      onSet((newValue, _, isReset) => {
-        isReset
-          ? localStorage.removeItem(storageKey)
-          : localStorage.setItem(storageKey, newValue);
-      });
-
-      if (window.addEventListener) {
-        window.addEventListener('storage', (storageEvent) => {
-          if (storageEvent.key === storageKey) {
-            setSelf(storageEvent.newValue ? storageEvent.newValue : '');
-          }
-        });
-      }
-    },
-  ],  
+// getOnInit reads localStorage while the atom is created rather than after the
+// first render, so the stored colour is applied without a flash of the default.
+const qrColorState = atomWithStorage<string>(storageKey, '#60a72e', rawStringStorage, {
+  getOnInit: true,
 });
 
 export default qrColorState;
+

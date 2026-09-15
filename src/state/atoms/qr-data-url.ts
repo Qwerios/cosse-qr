@@ -1,27 +1,14 @@
-import { atom } from 'recoil';
+import { atomWithStorage } from 'jotai/utils';
+import { rawStringStorage } from '../raw-local-storage';
 
 const storageKey = 'qrUrl';
 
-const qrDataUrlState = atom<string>({
-  key: 'qrDataUrl',
-  default: localStorage.getItem(storageKey) || 'https://www.cossecamperadventure.com',
-  effects: [
-    ({ onSet, setSelf }) => {
-      onSet((newValue, _, isReset) => {
-        isReset
-          ? localStorage.removeItem(storageKey)
-          : localStorage.setItem(storageKey, newValue);
-      });
-
-      if (window.addEventListener) {
-        window.addEventListener('storage', (storageEvent) => {
-          if (storageEvent.key === storageKey) {
-            setSelf(storageEvent.newValue ? storageEvent.newValue : '');
-          }
-        });
-      }
-    },
-  ],  
-});
+const qrDataUrlState = atomWithStorage<string>(
+  storageKey,
+  'https://www.cossecamperadventure.com',
+  rawStringStorage,
+  { getOnInit: true },
+);
 
 export default qrDataUrlState;
+

@@ -1,36 +1,21 @@
-import { atom } from 'recoil';
+import { atomWithStorage } from 'jotai/utils';
+import createRawLocalStorage from '../raw-local-storage';
 
 const storageKey = 'qrStyle';
 
-const fetchStoredValue = () => {
-  const storedValue = localStorage.getItem(storageKey);
-  switch (storedValue) {
-    case 'dots': return 'dots';
-    case 'squares': return 'squares';
-    default: return 'dots';
-  }
-}
+/** Shapes react-qrcode-logo can draw the QR modules in, as offered in settings. */
+export type QrStyle = 'dots' | 'squares';
 
-const qrStyleState = atom<'dots'|'squares'>({
-  key: 'qrStyle',
-  default: fetchStoredValue(),
-  effects: [
-    ({ onSet, setSelf }) => {
-      onSet((newValue, _, isReset) => {
-        isReset
-          ? localStorage.removeItem(storageKey)
-          : localStorage.setItem(storageKey, newValue);
-      });
+const qrStyleStorage = createRawLocalStorage<QrStyle>(
+  // Anything outside the two supported styles falls through to the default.
+  (storedValue) =>
+    storedValue === 'dots' || storedValue === 'squares' ? storedValue : undefined,
+  (value) => value,
+);
 
-      if (window.addEventListener) {
-        window.addEventListener('storage', (storageEvent) => {
-          if (storageEvent.key === storageKey) {
-            setSelf(storageEvent.newValue === 'squares' ? 'squares' : 'dots');
-          }
-        });
-      }
-    },
-  ],  
+const qrStyleState = atomWithStorage<QrStyle>(storageKey, 'dots', qrStyleStorage, {
+  getOnInit: true,
 });
 
 export default qrStyleState;
+
