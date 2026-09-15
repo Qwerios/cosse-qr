@@ -1,0 +1,7 @@
+# Revisions to skip in git blame, so a mechanical reformat does not claim
+# authorship of every line. Enable locally with:
+#   git config blame.ignoreRevsFile .git-blame-ignore-revs
+# GitHub picks this file up automatically.
+
+# style(format): apply oxfmt across the codebase
+be7b788c9fbd4537ebcbce5f0bf9491a302f1d1b
