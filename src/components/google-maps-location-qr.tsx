@@ -1,4 +1,4 @@
-import Box from "@mui/system/Box";
+import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Skeleton from "@mui/material/Skeleton";
 import TextField from "@mui/material/TextField";
@@ -34,7 +34,7 @@ const GoogleMapsLocationQr = () => {
 
     return (
         <Grid container spacing={4}>
-            <Grid item xs={12} sm={4}>
+            <Grid size={{ xs: 12, sm: 4 }}>
                 <TextField
                     fullWidth
                     label="Latitude"
@@ -44,7 +44,7 @@ const GoogleMapsLocationQr = () => {
                     variant="filled"
                     />                
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid size={{ xs: 12, sm: 4 }}>
                 <TextField
                     fullWidth
                     label="Longitude"
@@ -54,7 +54,7 @@ const GoogleMapsLocationQr = () => {
                     variant="filled"
                     />                
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid size={{ xs: 12, sm: 4 }}>
                 {qrDataLocation ?
                     <Box>
                         <QRCode 

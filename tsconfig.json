@@ -5,12 +5,13 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
+    // Vite resolves imports itself, so type resolution must follow the same
+    // package.json "exports" rules. TypeScript 7 removed the old "node10"
+    // strategy, and jotai only exposes its types under an "exports" condition.
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,

@@ -46,7 +46,7 @@ const Settings = () => {
 
     return (
         <Grid container spacing={4}>
-            <Grid item xs={12} sm={10}>
+            <Grid size={{ xs: 12, sm: 10 }}>
                 <TextField
                     fullWidth
                     label="QR Grote (pixels)"
@@ -56,11 +56,11 @@ const Settings = () => {
                     variant="filled"
                     />                
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid size={{ xs: 12, sm: 2 }}>
                 <Button onClick={handleReset} variant="outlined">Reset</Button>
             </Grid>
 
-            <Grid item xs={12} sm={5}>
+            <Grid size={{ xs: 12, sm: 5 }}>
                 <Select
                     fullWidth
                     value={style}
@@ -73,7 +73,7 @@ const Settings = () => {
                 </Select>  
                 <FormHelperText>Kies de stijl van de QR blokjes</FormHelperText>      
             </Grid>
-            <Grid item xs={12} sm={5}>
+            <Grid size={{ xs: 12, sm: 5 }}>
                 <Select
                     fullWidth
                     value={color}
@@ -86,7 +86,7 @@ const Settings = () => {
                 </Select>  
                 <FormHelperText>Kies de kleur van de QR code</FormHelperText>      
             </Grid>
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
                 <QRCode 
                     value="https://www.cossecamperadventure.com/" 
                     size={size} 

@@ -2,6 +2,11 @@
 
 Purpose built QR code generator for my friends at [Cosse Camper Adventure](https://www.cossecamperadventure.com)
 
+## Requirements
+
+Node.js 24 (the current LTS line) or newer, as pinned in `.nvmrc` and enforced by the
+`engines` field in `package.json`. With nvm installed, run `nvm use` in the project root.
+
 ## Development
 
 This app is built using React and Vite.
